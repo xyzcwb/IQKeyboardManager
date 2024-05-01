@@ -788,7 +788,7 @@ NS_EXTENSION_UNAVAILABLE_IOS("Unavailable in extension")
         CGFloat visibleHeight = CGRectGetHeight(keyWindow.frame)-kbSize.height;
 
         CGFloat topMovement = CGRectGetMinY(textFieldViewRectInRootSuperview)-topLayoutGuide;
-        CGFloat bottomMovement = CGRectGetMaxY(textFieldViewRectInWindow) - visibleHeight + bottomLayoutGuide;
+        CGFloat bottomMovement = MAX(kbSize.height - (CGRectGetHeight(keyWindow.frame) - CGRectGetMaxY(textFieldViewRectInWindow)) - bottomLayoutGuide, 0); //CGRectGetMaxY(textFieldViewRectInWindow) - visibleHeight + bottomLayoutGuide;
         moveUp = MIN(topMovement, bottomMovement);
     }
 
